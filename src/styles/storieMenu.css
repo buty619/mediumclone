@@ -1,0 +1,62 @@
+@import url("https://maxcdn.bootstrapcdn.com/font-awesome/5.1.0/css/font-awesome.min.css");
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+}
+
+.storie-menu-container{
+  display: flex;
+  position: absolute;
+}
+
+.plus {
+  display: flex;
+  width: 30px;
+  height: 30px;
+  margin-right: 15px;
+  justify-content: center;
+  align-items: center;
+  background-color: #ffffff;
+  border-radius: 100%;
+  border: 1px solid black;
+  cursor: pointer;
+  transition: all .3s ease;
+  border-bottom-style: solid;
+}
+
+ul {
+  display:flex;
+}
+
+#menu{
+  display:flex;
+}
+
+li{
+  display: flex;
+  color: black;
+  width: 30px;
+  height: 30px;
+  border-radius: 100%;
+  border: 1px solid black;
+  justify-content: center;
+  align-items: center;
+  margin-left: 9px;
+  cursor: pointer;
+}
+
+svg{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.rotate {
+  transform: rotate(135deg);
+}
+
+.hide{  
+  /* display: none; */
+  visibility: hidden;
+}

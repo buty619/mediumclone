@@ -1,0 +1,38 @@
+.nav-container{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0px 20px 0px 20px;
+  height: 65px;
+  position: relative;
+}
+
+.nav-logo-xs{  
+  display: inline;
+  align-items: center;
+}
+
+.nav-logo{
+  display: none;
+}
+
+.nav-btn-start{
+  font-weight: 400;
+  font-style: normal;
+  color: #03a87c;
+  padding: 10px;
+  border: 1px solid #03a87c;
+  border-radius: 4px;
+  text-decoration: none;  
+}
+
+
+@media(min-width:768px){
+  .nav-logo{
+    display: inline;
+    align-items: center;
+  }
+  .nav-logo-xs{
+    display: none;
+  }
+}
