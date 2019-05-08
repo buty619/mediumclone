@@ -22,4 +22,9 @@ html, body{
 }
 .storie-p:focus{
   outline: none;
-}   
+}
+
+a{
+  color: green;
+  text-decoration: none;
+}
