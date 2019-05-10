@@ -5,6 +5,11 @@
   padding: 0px 20px 0px 20px;
   height: 65px;
   position: relative;
+  margin: 0px 100px 0px 100px;
+}
+
+.nav-menu{
+  display: flex;
 }
 
 .nav-logo-xs{  
@@ -23,9 +28,17 @@
   padding: 10px;
   border: 1px solid #03a87c;
   border-radius: 4px;
-  text-decoration: none;  
+  text-decoration: none;
+  margin-left: 10px;  
 }
 
+.nav-signIn{
+  font-weight: 400;
+  font-style: normal;
+  color: #03a87c;
+  padding: 10px;
+  cursor: pointer;
+}
 
 @media(min-width:768px){
   .nav-logo{

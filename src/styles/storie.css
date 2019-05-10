@@ -28,3 +28,8 @@ a{
   color: green;
   text-decoration: none;
 }
+
+.medium-editor-placeholder{
+  display: flex;
+  text-align: center;
+}

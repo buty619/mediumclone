@@ -116,22 +116,17 @@ const Storie = props => {
   });
 
   const saveDom = _.debounce(async () => {
-    let documento = document.getElementsByClassName("medium-editor-element");
-    let title = document.getElementById("storieCont").firstChild.innerHTML;
-    let firstP = document.getElementById("storieCont").getElementsByTagName('p')[0].innerHTML;
-
+    let documento = document.getElementsByClassName("medium-editor-element")
     if(id.value){
+      console.log(documento[0].outerHTML);
       console.log("Modifica la historia con ID: "+id.value)
       await axios.post('http://localhost:4000/update', {
-        title: title,
-        firstP: firstP,
         text: documento[0].outerHTML,
         id: id.value
       });
     }else{
+      console.log(documento[0].outerHTML);
       let res = await axios.post('http://localhost:4000/create', {
-        title: title,
-        firstP: firstP,
         text: documento[0].outerHTML
       });
       console.log("Crea la historia con ID: " + res.data);
@@ -159,7 +154,7 @@ const Storie = props => {
                 }}
         text={text.value}
         onChange={handleChangeText}
-        id = "storieCont"
+        id = "title"
         className = "storie-p"
       >
       </Editor>
