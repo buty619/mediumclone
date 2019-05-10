@@ -105,10 +105,10 @@
 
 .banner-divider{
   border-bottom: 1px solid rgba(0, 0, 0, 0.15);
+  margin: auto;
   margin-top: 24px;
   margin-bottom: 24px;
-  grid-column-start: 1;
-  grid-column-end: 4;
+  width: 1032px;
 }
 
 .form-overlay{
@@ -134,7 +134,7 @@
   height: 450px;
   padding: 50px;
   margin: 5px;
-  background-image: url(https://s3.us-east-2.amazonaws.com/mediumclonemakeitreal/signIn.png);
+  background-image: url(https://s3.us-east-2.amazonaws.com/mediumclonemakeitreal/getStarted.png);
   background-size: 100%;
   background-repeat: no-repeat;
   box-shadow: 0 2px 10px rgba(0,0,0,.15);
@@ -221,4 +221,181 @@
 
 .hide{
   display: none;
+}
+
+.banner-directSignin{
+  display: flex;
+  justify-content: space-between;
+  align-content: center;
+  margin: auto;
+  margin-bottom: 30px;
+  width: 1032px;
+  height: 246px;
+  background-color: #fafafa;
+}
+
+.banner-directSignin-img{
+  width: 204px;
+  height: 246px;
+  background-image: url(https://s3.us-east-2.amazonaws.com/mediumclonemakeitreal/underbanner.png);
+  background-size: 100%;
+  background-repeat: no-repeat;
+}
+
+.banner-directSignin-content{
+  padding: 20px 60px;
+  margin: auto;
+}
+
+.banner-directSignin-content{
+  padding: 20px 60px;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.banner-directSignin-content h1{
+  font-family: "Lora", serif;
+  text-align: left;
+  font-size: 36px;
+  font-weight: 500px;
+  color: rgba(0,0,0,.84);
+  margin-bottom: 16px;
+}
+
+.banner-directSignin-content p{
+  text-align: left;
+  font-size: 18px;
+  font-weight: 400px;
+  color: rgba(0,0,0,.54);
+  margin-bottom: 16px;
+}
+
+.banner-directSignin-imput{
+  border:0;
+  border-bottom: 1px solid rgba(0,0,0,.15);
+  background: 0;
+  height: 35px;
+  width: 300px;
+  font-weight: 400;
+  font-size: 14px;
+}
+
+.banner-directSignin-imput:focus{
+  outline: none;
+}
+
+.banner-directSignin-btn-submit{
+  display: inline-block;
+  position: relative;
+  padding: 0 18px;
+  background: rgba(0,0,0,.84);
+  color: rgba(255,255,255,.97);
+  font-weight: 400;
+  font-size: 14px;
+  height: 37px;
+  border: 0px;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-left: 15px;
+}
+
+.banner-directSignin-btn-submit:focus{
+  outline: none;
+}
+
+.banner-directSignin-form{
+  display: flex;
+  justify-content: left;
+}
+
+.form-getStarted{
+  position: relative;
+  width: 800px;
+  height: 450px;
+  padding: 50px;
+  margin: 5px;
+  background-image: url(https://s3.us-east-2.amazonaws.com/mediumclonemakeitreal/signIn.png);
+  background-size: 100%;
+  background-repeat: no-repeat;
+  box-shadow: 0 2px 10px rgba(0,0,0,.15);
+}
+
+.form-getStarted-btn-close{
+  position: absolute;
+  top:0;
+  right: 0;
+  padding: 15px;
+  border-width: 0;
+  background-color: rgba(0,0,0,0);  
+  color: rgba(0,0,0,.54);
+  cursor: pointer;
+}
+
+.form-getStarted-btn-close:focus{
+  outline: none;
+}
+
+.form-getStarted-h1{
+  font-family: "Lora", serif;
+  font-size: 32px;
+  color:rgba(0,0,0,.84);
+  margin:0;
+  margin-bottom: 20px;
+}
+
+.form-getStarted-h2{
+  font-size: 14px;
+  color:rgba(0,0,0,.76);
+  width: 300px;
+  margin: auto;
+  font-weight: 400;
+}
+
+.form-getStarted-label{
+  font-size: 12px;
+  color:rgba(0,0,0,.76);
+  width: 300px;
+  margin: auto;
+  font-weight: 400;
+  margin-top: 24px;
+}
+
+.form-getStarted-imput{
+  border:0;
+  border-bottom: 1px solid rgba(0,0,0,.15);
+  background: 0;
+  height: 35px;
+  font-weight: 400;
+  font-size: 14px;
+}
+
+.form-getStarted-imput:focus{
+  outline: none;
+}
+
+.form-getStarted-btn-submit{
+  display: inline-block;
+  position: relative;
+  padding: 0 18px;
+  background: rgba(0,0,0,.84);
+  color: rgba(255,255,255,.97);
+  font-weight: 400;
+  font-size: 14px;
+  height: 37px;
+  border: 0px;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+.form-getStarted-btn-submit:focus{
+  outline: none;
+}
+
+.form-getStarted-btn-back{
+  color:#218799;
+  font-size: 12px;
+  cursor: pointer;
 }

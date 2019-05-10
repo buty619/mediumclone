@@ -29,7 +29,8 @@
   border: 1px solid #03a87c;
   border-radius: 4px;
   text-decoration: none;
-  margin-left: 10px;  
+  margin-left: 10px;
+  cursor: pointer;  
 }
 
 .nav-signIn{

@@ -12,6 +12,14 @@ const Navbar = props => {
     })
   });
 
+  const showGetStarted = (() =>{
+    store.dispatch({
+      type:"TOOGLE_GET_FLAG",
+      getFlag: true
+    })
+  });
+
+
   let content = (
     <div className = "nav-container">
       <Link to="/">
@@ -20,7 +28,7 @@ const Navbar = props => {
       </Link>      
       <div className = "nav-menu">
         <div onClick={showSignIn} className="nav-signIn">Sign in</div>
-        <div onClick={showSignIn} className="nav-btn-start">Get started</div>
+        <div onClick={showGetStarted} className="nav-btn-start">Get started</div>
         <Link to="/new" className = "nav-btn-start">New Story</Link>
         <Link to="/load" className = "nav-btn-start">Load</Link>
       </div>
