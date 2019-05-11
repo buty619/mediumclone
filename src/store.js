@@ -13,6 +13,13 @@ const reducer = (state,action) =>{
       getFlag: action.getFlag
     }
   }
+  if(action.type === "TOOGLE_OVER_FLAG"){
+    return{
+      ...state,
+      overFlag: action.overFlag
+    }
+  }
 }
 export default createStore(reducer, {signFlag: false,
-                                     getFlag:false});
+                                     getFlag:false,
+                                     overFlag:false});

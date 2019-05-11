@@ -24,7 +24,7 @@ html, body{
   outline: none;
 }
 
-a{
+.storieCont a{
   color: green;
   text-decoration: none;
 }

@@ -1,9 +1,14 @@
 import React, {useState, useEffect} from 'react';
 import { Link } from 'react-router-dom';
 import store from "../store";
+import OverMenu from "./overMenu";
 import "../styles/navbar.css"
 
 const Navbar = props => {
+
+  const [overFlag, setOverFlag] = useState({
+    flag: null
+  });
 
   const showSignIn = (() =>{
     store.dispatch({
@@ -19,6 +24,16 @@ const Navbar = props => {
     })
   });
 
+  store.subscribe(()=>{
+    setOverFlag({flag: store.getState().overFlag});
+  });
+
+  const toogleOverMenu = (() =>{    
+    store.dispatch({
+      type:"TOOGLE_OVER_FLAG",
+      overFlag: !overFlag.flag
+    })
+  });
 
   let content = (
     <div className = "nav-container">
@@ -29,9 +44,12 @@ const Navbar = props => {
       <div className = "nav-menu">
         <div onClick={showSignIn} className="nav-signIn">Sign in</div>
         <div onClick={showGetStarted} className="nav-btn-start">Get started</div>
-        <Link to="/new" className = "nav-btn-start">New Story</Link>
         <Link to="/load" className = "nav-btn-start">Load</Link>
-      </div>
+        <div className="nav-userNav" onClick={toogleOverMenu}>
+          <img className="nav-userNav-img" src="https://s3.us-east-2.amazonaws.com/mediumclonemakeitreal/user2.jpg" alt=""></img>
+        </div>
+        <OverMenu />
+      </div>      
     </div>
   );
   return content
