@@ -64,14 +64,14 @@
   width: 300px;
   margin: auto;
   font-weight: 400;
-  margin-top: 24px;
+  margin-top: 15px;
 }
 
 .form-getStarted-imput{
   border:0;
   border-bottom: 1px solid rgba(0,0,0,.15);
   background: 0;
-  height: 35px;
+  height: 25px;
   font-weight: 400;
   font-size: 14px;
 }

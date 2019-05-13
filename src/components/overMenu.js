@@ -1,37 +1,62 @@
-import React, {useState, useEffect} from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
-import store from "../store";
+import {connect} from "react-redux";
+import { Redirect } from 'react-router';
+import {showUserMenu,logOut,userInfo} from "../actionCreators";
 import "../styles/navbar.css"
 
-const OverMenu = props => {
-  
-  const [overFlag, setOverFlag] = useState({
-    flag: null
-  });
+const OverMenu = ({overFlag,userInfo,userInfoDispach,userMenu,logOut}) => {
 
-  store.subscribe(()=>{
-    setOverFlag({flag: store.getState().overFlag});
+  const logingOut = (()=>{
+    logOut();
+    userMenu(false);
+    userInfoDispach({});
+    localStorage.removeItem('token'); 
   });
 
   let content = (    
-    <div className={`nav-userNav-over ${overFlag.flag ? null: "hide"}`}>
+    <div className={`nav-userNav-over ${overFlag ? null: "hide"}`}>
       <div className="nav-userNav-over-arrow"></div>        
       <div className="nav-userNav-over-inner">
         <ul>
           <li>
             <div className="nav-userNav-over-head">
-              <img className="nav-userNav-over-head-img" src="https://s3.us-east-2.amazonaws.com/mediumclonemakeitreal/user2.jpg" alt=""></img>
-              <p className="nav-userNav-over-head-p">Cristian Felipe Buitrago</p>
+              <img className="nav-userNav-over-head-img" src={userInfo.userImg} alt=""></img>
+              <p className="nav-userNav-over-head-p">{userInfo.name}</p>
             </div>
           </li>
           <li><div className="nav-userNav-over-separador"></div></li>
           <li><div className="nav-userNav-over-section"><Link to="/new">New Story</Link></div></li>
           <li><div className="nav-userNav-over-separador"></div></li>
-          <li><div className="nav-userNav-over-section">Sign out</div></li>
+          <li><div className="nav-userNav-over-section"><Link to={`/${userInfo.userId}/EditProfile`}>Edit Profile</Link></div></li>
+          <li><div className="nav-userNav-over-separador"></div></li>
+          <li><div className="nav-userNav-over-section" onClick={logingOut}><Link to={`/`}>Sign out</Link></div></li>
         </ul>
       </div>
     </div>
   );
   return content
 }
-export default OverMenu;
+
+const mapStateToProps = state => {
+  return {
+    overFlag: state.overFlag,
+    userInfo: state.userInfo
+  };
+}
+
+const mapDispatchToProps = dispatch => {
+  return {
+    logOut () {
+      dispatch(logOut());
+    },
+    userMenu (flag) {
+      dispatch(showUserMenu(flag));
+    },
+    userInfoDispach (data) {
+      dispatch(userInfo(data));
+    }
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(OverMenu);

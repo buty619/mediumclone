@@ -1,35 +1,13 @@
-import React, {useState, useEffect} from 'react';
-//import { Link } from 'react-router-dom';
+import React  from 'react';
 import axios from "axios";
-import store from "../store";
+import {connect} from "react-redux";
+import {hideModalSignIn, showModalGetStarted, isLogIn, userInfo} from "../actionCreators";
 import "../styles/signIn.css"
 
-const SignIn = props => {
-
-  const [signFlag, setSignFlag] = useState({
-    flag: null
-  });
-
-  const [email, setEmail] = useState({
-    value: ""
-  });
-
-  store.subscribe(()=>{
-    setSignFlag({flag: store.getState().signFlag});
-  });
-
-  const hideSignIn = (() =>{
-    store.dispatch({
-      type:"TOOGLE_SIGN_FLAG",
-      signFlag: false
-    })
-  });
+const SignIn = ({signFlag,hideSignIn,showGetStarted,isLogIn,userInfo}) => {
 
   const toogleForms = (() =>{
-    store.dispatch({
-      type:"TOOGLE_GET_FLAG",
-      getFlag: true
-    })
+    showGetStarted();
     hideSignIn();
   });
 
@@ -38,13 +16,17 @@ const SignIn = props => {
       email: document.getElementById("emailSignIn").value,
       password: document.getElementById("passwordSignIn").value
     });
+
     localStorage.setItem('token', JSON.stringify(token.data.token))
+
     hideSignIn();
+    isLogIn();
+    userInfo(token.data.user);
   })
 
   let content = (
     <div>
-      <div className={`form-overlay ${signFlag.flag ? null: "hide"}`}>
+      <div className={`form-overlay ${signFlag ? null: "hide"}`}>
         <div className="form-signIn">
           <button className="form-signIn-btn-close" onClick={hideSignIn}>
             <span><svg width="29" height="29"><path d="M20.13 8.11l-5.61 5.61-5.609-5.61-.801.801 5.61 5.61-5.61 5.61.801.8 5.61-5.609 5.61 5.61.8-.801-5.609-5.61 5.61-5.61" fillRule="evenodd"></path></svg></span>
@@ -66,4 +48,28 @@ const SignIn = props => {
   );
   return content
 }
-export default SignIn;
+
+const mapStateToProps = state => {
+  return {
+    signFlag: state.signFlag
+  };
+}
+
+const mapDispatchToProps = dispatch => {
+  return {
+    hideSignIn () {
+      dispatch(hideModalSignIn());
+    },
+    showGetStarted () {
+      dispatch(showModalGetStarted());
+    },
+    isLogIn () {
+      dispatch(isLogIn());
+    },
+    userInfo (data) {
+      dispatch(userInfo(data));
+    }
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(SignIn);

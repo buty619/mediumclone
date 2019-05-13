@@ -1,25 +1,48 @@
 import {createStore} from "redux";
 
 const reducer = (state,action) =>{
-  if(action.type === "TOOGLE_SIGN_FLAG"){
+  if(action.type === "SET_STATE"){
+    return{
+      signFlag: false,
+      getFlag:false,
+      overFlag:false,
+      logInFlag:false,
+      userInfo:{}
+    }
+  }
+  if(action.type === "SHOW_MODAL_SIGN_IN"){
     return{
       ...state,
       signFlag: action.signFlag
     }
   }
-  if(action.type === "TOOGLE_GET_FLAG"){
+  if(action.type === "SHOW_MODAL_GET_STARTED"){
     return{
       ...state,
       getFlag: action.getFlag
     }
   }
-  if(action.type === "TOOGLE_OVER_FLAG"){
+  if(action.type === "SHOW_USER_MENU"){
     return{
       ...state,
       overFlag: action.overFlag
     }
   }
+  if(action.type === "IS_LOG_IN"){
+    return{
+      ...state,
+      logInFlag: action.logInFlag
+    }
+  }
+  if(action.type === "USER_INFO"){
+    return{
+      ...state,
+      userInfo: action.userInfo
+    }
+  }
 }
 export default createStore(reducer, {signFlag: false,
                                      getFlag:false,
-                                     overFlag:false});
+                                     overFlag:false,
+                                     logInFlag:false,
+                                     userInfo:{}});

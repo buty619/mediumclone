@@ -1,39 +1,13 @@
-import React, {useState, useEffect} from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
-import store from "../store";
 import OverMenu from "./overMenu";
+import {connect} from "react-redux";
+import {showModalGetStarted,showModalSignIn,showUserMenu,isLogIn} from "../actionCreators";
 import "../styles/navbar.css"
 
-const Navbar = props => {
+const Navbar = ({overFlag,logInFlag,userInfo,showSignIn,showGetStarted,userMenu}) => {
+  console.log(overFlag)
 
-  const [overFlag, setOverFlag] = useState({
-    flag: null
-  });
-
-  const showSignIn = (() =>{
-    store.dispatch({
-      type:"TOOGLE_SIGN_FLAG",
-      signFlag: true
-    })
-  });
-
-  const showGetStarted = (() =>{
-    store.dispatch({
-      type:"TOOGLE_GET_FLAG",
-      getFlag: true
-    })
-  });
-
-  store.subscribe(()=>{
-    setOverFlag({flag: store.getState().overFlag});
-  });
-
-  const toogleOverMenu = (() =>{    
-    store.dispatch({
-      type:"TOOGLE_OVER_FLAG",
-      overFlag: !overFlag.flag
-    })
-  });
 
   let content = (
     <div className = "nav-container">
@@ -42,16 +16,40 @@ const Navbar = props => {
         <svg className="nav-logo-xs" width="45" height="45" ><path d="M5 40V5h35v35H5zm8.56-12.627c0 .555-.027.687-.318 1.03l-2.457 2.985v.396h6.974v-.396l-2.456-2.985c-.291-.343-.344-.502-.344-1.03V18.42l6.127 13.364h.714l5.256-13.364v10.644c0 .29 0 .342-.185.528l-1.848 1.796v.396h9.19v-.396l-1.822-1.796c-.184-.186-.21-.238-.21-.528V15.937c0-.291.026-.344.21-.528l1.823-1.797v-.396h-6.471l-4.622 11.542-5.203-11.542h-6.79v.396l2.14 2.64c.239.292.291.37.291.768v10.353z"/></svg>
       </Link>      
       <div className = "nav-menu">
-        <div onClick={showSignIn} className="nav-signIn">Sign in</div>
-        <div onClick={showGetStarted} className="nav-btn-start">Get started</div>
-        <Link to="/load" className = "nav-btn-start">Load</Link>
-        <div className="nav-userNav" onClick={toogleOverMenu}>
-          <img className="nav-userNav-img" src="https://s3.us-east-2.amazonaws.com/mediumclonemakeitreal/user2.jpg" alt=""></img>
-        </div>
+        <div onClick={showSignIn} className={`nav-signIn ${logInFlag ? "hide": null}`}>Sign in</div>
+        <div onClick={showGetStarted} className={`nav-btn-start ${logInFlag ? "hide": null}`}>Get started</div>
+        <Link to="/load" className={`nav-btn-start ${logInFlag ? null: "hide"}`}>Load</Link>
+        <div className={`nav-userNav ${logInFlag ? null: "hide"}`} onClick={userMenu(!overFlag)}><img className="nav-userNav-img" src={userInfo.userImg} alt=""></img></div>        
         <OverMenu />
       </div>      
     </div>
   );
   return content
 }
-export default Navbar;
+
+const mapStateToProps = state => {
+  return {
+    overFlag: state.overFlag,
+    logInFlag: state.logInFlag,
+    userInfo: state.userInfo
+  };
+}
+
+const mapDispatchToProps = dispatch => {
+  return {
+    showSignIn () {
+      dispatch(showModalSignIn());
+    },
+    showGetStarted () {
+      dispatch(showModalGetStarted());
+    },
+    isLogIn () {
+      dispatch(isLogIn());
+    },
+    userMenu (flag) {
+      dispatch(showUserMenu(flag));
+    }
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Navbar);

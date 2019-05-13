@@ -2,7 +2,6 @@ import React, {useState, useEffect} from 'react';
 import NavBar from "../components/navbar";
 import Banner from "../components/banner";
 import axios from "axios";
-//import { Link } from 'react-router-dom';
 import "../styles/navbar.css";
 import "../styles/storie.css";
 require('medium-editor/dist/css/medium-editor.css');
