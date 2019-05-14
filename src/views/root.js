@@ -14,7 +14,7 @@ const Root = props => {
   });
   
   const loadAll = ( async () =>{
-    const allStories = await axios.post('http://localhost:4000/loadAll');
+    const allStories = await axios.get('http://localhost:4000/loadAll');
     setAllStorie({value:allStories.data});
   });
 

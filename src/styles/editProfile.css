@@ -1,0 +1,119 @@
+.prof-container{
+  display: flex;
+  width: 600px;
+  margin: auto;
+  margin-top: 100px;
+}
+
+.prof-form{
+  display: flex;
+  flex-direction: column;
+  width: 480px;
+  margin-right: 20px;
+}
+
+.prof-nameImput{
+  background: 0;
+  height: 35px;
+  font-weight: 600;
+  font-size: 30px;
+  color: rgba(0,0,0,.84);
+  text-align: left;
+}
+.prof-nameImput:focus{
+  outline: none;
+}
+.prof-descriptionImput{
+  background: 0;
+  margin-top: 15px;
+  text-align: left;
+  font-size: 16px;
+  font-weight: 400;
+  color:rgba(0,0,0,.76);
+}
+.prof-descriptionImput:focus{
+  outline: none;
+}
+.prof-img label{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.prof-img img{
+  border-radius: 100%;
+  width: 100px;
+  height: 100px;
+  
+}
+.prof-img span{
+  position: absolute;
+  fill: rgba(255,255,255,.65);
+  cursor: pointer;
+  background: rgba(0,0,0,.54);
+  border-radius: 100%;
+  width: 100px;
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.prof-img span:hover{
+  fill: rgba(255,255,255,.97)
+}
+
+.prof-img input{
+  display: none;
+}
+
+.prof-btn-save{
+  font-weight: 400;
+  font-style: normal;
+  color: #03a87c;
+  padding: 10px;
+  border: 1px solid #03a87c;
+  border-radius: 4px;
+  text-decoration: none;
+  margin-left: 10px;
+  cursor: pointer;  
+  background-color: #fff;
+}
+
+.prof-btn-save a{
+  font-weight: 400;
+  font-style: normal;
+  color: #03a87c;
+  text-decoration: none;
+}
+
+.prof-btn-save:focus{
+  outline: none;
+}
+
+.prof-btn-cancel{
+  font-weight: 400;
+  font-style: normal;
+  color: rgba(0, 0, 0, 0.54);
+  padding: 10px;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  border-radius: 4px;
+  text-decoration: none;
+  margin-left: 10px;
+  cursor: pointer;  
+  background-color: #fff;
+}
+
+.prof-btn-cancel a{
+  font-weight: 400;
+  font-style: normal;
+  color: rgba(0, 0, 0, 0.54);
+  text-decoration: none;
+}
+
+.prof-btn-cancel:focus{
+  outline: none;
+}
+
+.prof-btn-form{
+  display: flex;
+  justify-content: right;
+}

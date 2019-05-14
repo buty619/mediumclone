@@ -61,6 +61,13 @@ const showUserMenu = (flag) =>{
   }
 }
 
+const saveStorieId = (value) =>{
+  return{
+    type: "SAVE_STORIE_ID",
+    storieId: value
+  }
+}
+
 
 export {showModalSignIn,
         showModalGetStarted, 
@@ -70,4 +77,5 @@ export {showModalSignIn,
         isLogIn,
         logOut,
         userInfo,
-        showUserMenu}
+        showUserMenu,
+        saveStorieId}

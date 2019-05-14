@@ -40,8 +40,8 @@ const SignIn = ({signFlag,hideSignIn,showGetStarted,isLogIn,userInfo}) => {
           <div>
             <button className="form-signIn-btn-submit"  onClick={signIn}>Sign In</button>
           </div>
-            <spam className="form-signIn-label" >No account? </spam>
-            <a className="form-signIn-btn-back" onClick={toogleForms}>Create One</a>
+            <span className="form-signIn-label" >No account? </span>
+            <div className="form-signIn-btn-back" onClick={toogleForms}>Create One</div>
         </div>
       </div>
     </div>      

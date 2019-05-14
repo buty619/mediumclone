@@ -6,8 +6,10 @@ import {showModalGetStarted,showModalSignIn,showUserMenu,isLogIn} from "../actio
 import "../styles/navbar.css"
 
 const Navbar = ({overFlag,logInFlag,userInfo,showSignIn,showGetStarted,userMenu}) => {
-  console.log(overFlag)
 
+  const toogleUserMenu = (() =>{
+    userMenu(overFlag);
+  });
 
   let content = (
     <div className = "nav-container">
@@ -19,7 +21,7 @@ const Navbar = ({overFlag,logInFlag,userInfo,showSignIn,showGetStarted,userMenu}
         <div onClick={showSignIn} className={`nav-signIn ${logInFlag ? "hide": null}`}>Sign in</div>
         <div onClick={showGetStarted} className={`nav-btn-start ${logInFlag ? "hide": null}`}>Get started</div>
         <Link to="/load" className={`nav-btn-start ${logInFlag ? null: "hide"}`}>Load</Link>
-        <div className={`nav-userNav ${logInFlag ? null: "hide"}`} onClick={userMenu(!overFlag)}><img className="nav-userNav-img" src={userInfo.userImg} alt=""></img></div>        
+        <div className={`nav-userNav ${logInFlag ? null: "hide"}`} onClick={toogleUserMenu}><img className="nav-userNav-img" src={userInfo.userImg} alt=""></img></div>        
         <OverMenu />
       </div>      
     </div>
@@ -47,7 +49,7 @@ const mapDispatchToProps = dispatch => {
       dispatch(isLogIn());
     },
     userMenu (flag) {
-      dispatch(showUserMenu(flag));
+      dispatch(showUserMenu(! flag));
     }
   }
 }

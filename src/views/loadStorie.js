@@ -14,7 +14,7 @@ const LoadStorie = props => {
   });
   
   const load = ( async () =>{
-    const loadStorie = await axios.post('http://localhost:4000/load', {
+    const loadStorie = await axios.get('http://localhost:4000/load', {
         id: "5cd339c2214e961df049d0a4"
     });
     let doc = new DOMParser().parseFromString(loadStorie.data.text, "text/xml");

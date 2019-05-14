@@ -5,10 +5,13 @@ html, body{
 }
 .storie-title{
   margin: auto;
+  margin-top: 30px;
+  margin-bottom: 15px;
   width: 700px;
   font-family: "Lora", serif;
   font-size: 42px;
   text-align: left;
+  border:0;
 }
 .storie-p{
   margin: auto;

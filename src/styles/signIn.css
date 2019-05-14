@@ -105,6 +105,7 @@
   color:#218799;
   font-size: 12px;
   cursor: pointer;
+  display: inline-block;
 }
 
 .hide{

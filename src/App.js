@@ -13,7 +13,9 @@ import './App.css';
 
 const history = createBrowserHistory();
 
+
 store.dispatch(setState());
+localStorage.removeItem('token'); 
 
 class App extends Component {
   render() {

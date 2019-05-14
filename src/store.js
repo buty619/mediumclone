@@ -7,7 +7,9 @@ const reducer = (state,action) =>{
       getFlag:false,
       overFlag:false,
       logInFlag:false,
-      userInfo:{}
+      userInfo:{},
+      newStorieFlag:false,
+      storieId:""
     }
   }
   if(action.type === "SHOW_MODAL_SIGN_IN"){
@@ -40,9 +42,16 @@ const reducer = (state,action) =>{
       userInfo: action.userInfo
     }
   }
+  if(action.type === "SAVE_STORIE_ID"){
+    return{
+      ...state,
+      storieId: action.storieId
+    }
+  }
 }
 export default createStore(reducer, {signFlag: false,
                                      getFlag:false,
                                      overFlag:false,
                                      logInFlag:false,
-                                     userInfo:{}});
+                                     userInfo:{},
+                                     storieId:""});
