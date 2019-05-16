@@ -54,3 +54,65 @@
 .load-body{
     margin-bottom: 30px;
 }
+
+.like-btn,
+.clap-btn {
+  display: inline-block;
+  Cursor: pointer;
+  width: 80px;
+  height: 80px;
+}
+
+.like-btn {
+  background: url('https://i.ibb.co/vw78mf3/heart.png') no-repeat 0% 50%;
+  background-size: 2900%;
+  position: absolute;
+  left: 100px;
+  top: 300px;
+}
+
+.clap-btn {
+  background: url('https://i.ibb.co/GVsbrFF/claps.png') no-repeat 0% 50%;
+  background-size: 900%;
+  position: absolute;
+  left: 100px;
+  top: 250px;
+}
+
+.book-btn{
+  position: absolute;
+  left: 122px;
+  top: 370px;
+  fill:rgba(0, 0, 0, 0.5);
+  cursor: pointer;
+}
+
+.like-active,
+.clap-active,
+.book-active{
+  animation-name: animate;
+  animation-duration: .8s;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+}
+.like-active {
+  animation-timing-function: steps(28);
+}
+
+.clap-active {
+   animation-timing-function: steps(8);
+}
+
+.book-active {
+  fill:rgba(0, 0, 0, 0.89);
+}
+
+@keyframes animate {
+  0%   { background-position: left;  }
+  50%  { background-position: right; }
+  100% { background-position: right; }
+}
+
+#book-btn path{
+  transform: scale(1.45);
+}

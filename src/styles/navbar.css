@@ -67,8 +67,8 @@
 }
 
 .nav-userNav-over{
-  top: 65px;
-  right: 74px;
+  top: 85px;
+  right: 97px;
   position: fixed;
   display: flex;
   flex-direction: column;
@@ -107,7 +107,7 @@
   width: 14px;
   height: 14px;
   position: fixed;
-  top:59px;
+  top:79px;
   color: #fff;
   z-index: 900;
 }

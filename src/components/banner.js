@@ -1,6 +1,7 @@
 import React from 'react';
 import SignIn from "./signIn";
 import GetStarted from "./getStarted";
+import BannerList from "./bannerList";
 import { Link } from 'react-router-dom';
 import "../styles/banner.css";
 
@@ -56,7 +57,7 @@ const Banner = props => {
               <div><p>{props.data.value[4].firstP.slice(0,50)} ...</p></div>
             </Link>
           </div>
-          <div className = "banner-seemore">SEE ALL FEATURED ></div>
+          <a href="#more"className = "banner-seemore">SEE ALL FEATURED ></a>
         </div>
         <div className = "banner-divider"></div>
         <div className="banner-directSignin">
@@ -70,8 +71,15 @@ const Banner = props => {
             </div>
           </div>
         </div>
+        
         <SignIn />
         <GetStarted />
+        <div className = "banner-divider"></div>
+        <div id="more">
+          {props.data.value.filter(storie => storie.publish === true).map((data) => {
+            return <BannerList data={data}/>
+          })}
+        </div>       
       </div>      
     );
     return content
@@ -91,6 +99,7 @@ const Banner = props => {
             </div>
           </div>
         </div>
+        <div className = "banner-divider"></div>
       </div>
     );
     return content

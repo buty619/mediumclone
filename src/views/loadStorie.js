@@ -29,6 +29,18 @@ const LoadStorie = ({match}) => {
     setUser({value: loadUser.data.user});
   });
 
+  const addLikeClass = (()=>{
+    document.getElementById("like-btn").classList.toggle('like-active');
+  });
+
+  const addClapClass = (()=>{
+    document.getElementById("clap-btn").classList.toggle('clap-active');
+  });
+
+  const addBookClass = (()=>{
+    document.getElementById("book-btn").classList.toggle('book-active');
+  });
+
   useEffect(() => {
     load();
   }, []);
@@ -48,6 +60,13 @@ const LoadStorie = ({match}) => {
         <img className="load-card-banner-img" src={storie.value.img} alt=""></img>
       </div>
       <div className="load-body" contentEditable="false" dangerouslySetInnerHTML={{ __html: storie.value.text }} />
+    
+      <div>
+        <span id="like-btn" className="like-btn" onClick={addLikeClass}></span>
+        <span id="clap-btn" className="clap-btn" onClick={addClapClass}></span>
+        <svg id="book-btn" className="book-btn" onClick={addBookClass}><path d="M19 6c0-1.1-.9-2-2-2H8c-1.1 0-2 .9-2 2v14.66h.012c.01.103.045.204.12.285a.5.5 0 0 0 .706.03L12.5 16.85l5.662 4.126c.205.183.52.17.708-.03a.5.5 0 0 0 .118-.285H19V6z"></path></svg>
+      </div>
+    
     </div>
   );
   return content

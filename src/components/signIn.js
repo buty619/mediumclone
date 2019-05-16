@@ -43,7 +43,6 @@ const SignIn = ({signFlag,hideSignIn,showGetStarted,isLogIn,userInfo}) => {
     hideSignIn();
     isLogIn();
     userInfo(token.data.user);
-    alert ("Your Sign In");
   })
 
   let content = (
