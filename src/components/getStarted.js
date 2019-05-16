@@ -27,7 +27,6 @@ const GetStarted = ({getFlag, hideGetStarted}) => {
         <input id="name" className="form-getStarted-imput"></input>
         <div className="form-getStarted-label">Your email</div>
         <input id="email" className="form-getStarted-imput"></input>
-        {/* <input id="email" className="form-getStarted-imput" value={email.value} onKeyDown={setEmail({value:document.getElementById("email").value})}></input> */}
         <div className="form-getStarted-label">Your password</div>
         <input id="password" className="form-getStarted-imput" type="password"></input>
         <div>

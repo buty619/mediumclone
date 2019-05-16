@@ -44,7 +44,7 @@ const OverMenu = ({overFlag,userInfo,userInfoDispach,userMenu,logOut,saveStorieI
           <li><div className="nav-userNav-over-separador" ></div></li>
           <li><div className="nav-userNav-over-section" onClick={toogleUserMenu}><Link to={`/${userInfo.userId}/EditProfile`}>Edit Profile</Link></div></li>
           <li><div className="nav-userNav-over-separador"></div></li>
-          <li><div className="nav-userNav-over-section" ><Link to={`/${userInfo.userId}/listStories`}>My Stories</Link></div></li>
+          <li><div className="nav-userNav-over-section" onClick={toogleUserMenu}><Link to={`/${userInfo.userId}/listStories`}>My Stories</Link></div></li>
           <li><div className="nav-userNav-over-separador"></div></li>
           <li><div className="nav-userNav-over-section" onClick={logingOut}><Link to={`/`}>Sign out</Link></div></li>
         </ul>

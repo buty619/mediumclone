@@ -1,6 +1,4 @@
 import React from 'react';
-import Editor from 'react-medium-editor';
-import StorieMenu from "../components/storieMenu";
 import {connect} from "react-redux";
 import {showModalPublish} from "../actionCreators";
 import { Link } from 'react-router-dom';

@@ -158,6 +158,14 @@
   cursor: pointer;
 }
 
+.publish-card-btn a{
+  text-decoration: none;
+  color: #fafafa;
+  padding: 10px 15px;
+  font-size: 13px;
+  font-weight: 400;
+}
+
 
 .mt15px{
   margin-top: 15px;

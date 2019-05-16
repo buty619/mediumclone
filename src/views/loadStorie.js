@@ -2,7 +2,6 @@ import React, {useState, useEffect} from 'react';
 import NavBar from "../components/navbar";
 import {connect} from "react-redux";
 import axios from "axios";
-//import { Link } from 'react-router-dom';
 import "../styles/navbar.css";
 import "../styles/storie.css";
 import "../styles/loadStorie.css";
@@ -42,11 +41,11 @@ const LoadStorie = ({match}) => {
         <div className="load-card">
           <h1 className="load-storie-title">{storie.value.title}</h1>
           <div className="load-card-user">
-            <img className="load-card-user-img" src={user.value.userImg}></img>
+            <img className="load-card-user-img" src={user.value.userImg} alt=""></img>
             <p>{user.value.name}</p>
           </div>          
         </div>
-        <img className="load-card-banner-img" src={storie.value.img}></img>
+        <img className="load-card-banner-img" src={storie.value.img} alt=""></img>
       </div>
       <div className="load-body" contentEditable="false" dangerouslySetInnerHTML={{ __html: storie.value.text }} />
     </div>

@@ -10,7 +10,7 @@ require('medium-editor/dist/css/medium-editor.css');
 require('medium-editor/dist/css/themes/default.css');
 
 
-const Storie = ({storieId,showModalPublish}) => {
+const Storie = ({storieId}) => {
 
   const saveDom = (async () => {
     let documento = document.getElementsByClassName("medium-editor-element");
@@ -22,6 +22,7 @@ const Storie = ({storieId,showModalPublish}) => {
         title: title,
         firstP: firstP,
         text: documento[0].outerHTML,
+        publish: false,
         id: storieId
       });
     }
@@ -31,6 +32,7 @@ const Storie = ({storieId,showModalPublish}) => {
         title: title,
         firstP: "",
         text: documento[0].outerHTML,
+        publish: false,
         id: storieId
       });
     }

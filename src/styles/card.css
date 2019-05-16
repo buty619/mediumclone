@@ -1,0 +1,37 @@
+.card-app{
+  text-decoration: none;
+  color: rgba(0, 0, 0, 0.84);
+}
+
+.card-container{
+  width: 1032px;
+  margin: auto;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  text-align: left;
+}
+
+.card-title{
+  margin: 5px;
+}
+
+.card-p{
+  color:rgba(0, 0, 0, 0.54);
+  font-size: 14px;
+  margin: 5px;
+}
+
+.card-id{
+  color:rgba(0, 0, 0, 0.54);
+  font-size: 8px;
+  margin: 5px;
+}
+
+.card-bottom{
+  display: flex;
+  justify-content: space-between;
+}
+
+.fa-trash-alt{
+  color:rgba(0, 0, 0, 0.54);
+  cursor: pointer;
+}
