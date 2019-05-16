@@ -2,14 +2,28 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import OverMenu from "./overMenu";
 import {connect} from "react-redux";
-import {showModalGetStarted,showModalSignIn,showUserMenu,isLogIn} from "../actionCreators";
+import axios from "axios";
+import {showModalGetStarted,showModalSignIn,showUserMenu,isLogIn,showModalPublish,saveStorieInfo} from "../actionCreators";
 import "../styles/navbar.css"
 
-const Navbar = ({overFlag,logInFlag,userInfo,showSignIn,showGetStarted,userMenu}) => {
+const Navbar = ({overFlag,logInFlag,userInfo,storieId,showSignIn,showGetStarted,userMenu,showModalPublish,saveStorieInfo}) => {
 
   const toogleUserMenu = (() =>{
     userMenu(overFlag);
   });
+
+  const showPublish = (async () =>{
+    const id = storieId
+    console.log(storieId)
+    const loadStorie = await axios.post('http://localhost:4000/load', {
+      id: id
+    });
+    console.log(loadStorie);
+    saveStorieInfo(loadStorie.data);
+
+    showModalPublish(true);
+  });
+
 
   let content = (
     <div className = "nav-container">
@@ -20,7 +34,7 @@ const Navbar = ({overFlag,logInFlag,userInfo,showSignIn,showGetStarted,userMenu}
       <div className = "nav-menu">
         <div onClick={showSignIn} className={`nav-signIn ${logInFlag ? "hide": null}`}>Sign in</div>
         <div onClick={showGetStarted} className={`nav-btn-start ${logInFlag ? "hide": null}`}>Get started</div>
-        <Link to="/load" className={`nav-btn-start ${logInFlag ? null: "hide"}`}>Load</Link>
+        <div onClick={showPublish} className={`nav-btn-start ${storieId ? null: "hide"}`}>Ready to publish?</div>
         <div className={`nav-userNav ${logInFlag ? null: "hide"}`} onClick={toogleUserMenu}><img className="nav-userNav-img" src={userInfo.userImg} alt=""></img></div>        
         <OverMenu />
       </div>      
@@ -33,7 +47,8 @@ const mapStateToProps = state => {
   return {
     overFlag: state.overFlag,
     logInFlag: state.logInFlag,
-    userInfo: state.userInfo
+    userInfo: state.userInfo,
+    storieId: state.storieId
   };
 }
 
@@ -50,6 +65,12 @@ const mapDispatchToProps = dispatch => {
     },
     userMenu (flag) {
       dispatch(showUserMenu(! flag));
+    },
+    showModalPublish (flag) {
+      dispatch(showModalPublish(flag));
+    },
+    saveStorieInfo (data) {
+      dispatch(saveStorieInfo(data));
     }
   }
 }

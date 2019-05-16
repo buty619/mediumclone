@@ -15,16 +15,16 @@ const history = createBrowserHistory();
 
 
 store.dispatch(setState());
-localStorage.removeItem('token'); 
+//localStorage.removeItem('token'); 
 
 class App extends Component {
   render() {
     return (
       <Router history={history}>
         <Route exact path="/" component={root} />
-        <Route exact path="/new" component={whitAuth(newStorie)} />
-        <Route exact path="/load" component={whitAuth(loadStorie)} />
+        <Route exact path="/newStorie" component={whitAuth(newStorie)} />
         <Route exact path="/:id/EditProfile" component={whitAuth(editProfile)} />
+        <Route exact path="/storie/:id" component={loadStorie} />
       </Router>
     );
   }

@@ -1,8 +1,8 @@
 import React from 'react';
 import Editor from 'react-medium-editor';
 import StorieMenu from "../components/storieMenu";
+import Publish from "../components/publish";
 import {connect} from "react-redux";
-import {NewStorie} from "../actionCreators";
 import axios from "axios";
 import "../styles/storie.css";
 
@@ -10,11 +10,7 @@ require('medium-editor/dist/css/medium-editor.css');
 require('medium-editor/dist/css/themes/default.css');
 
 
-const Storie = ({storieId}) => {
-
-  const handleChangeText = (() => {
-    setTimeout(()=>{saveDom()},3000);
-  });
+const Storie = ({storieId,showModalPublish}) => {
 
   const saveDom = (async () => {
     let documento = document.getElementsByClassName("medium-editor-element");
@@ -42,7 +38,7 @@ const Storie = ({storieId}) => {
 
   let content = (
     <div className="app">
-      <input id="title" className ="storie-title" placeholder="Title" onChange={handleChangeText}></input>
+      <input id="title" className ="storie-title" placeholder="Title" onChange={saveDom}></input>
       <Editor
         options={{toolbar: {buttons:  [{name: 'bold', contentFA:"<i class=\"fas fa-bold\"></i>"},
                                       {name: 'italic', contentFA:"<i class=\"fas fa-italic\"></i>"},
@@ -58,12 +54,13 @@ const Storie = ({storieId}) => {
                   },
                   autoLink: true,
                 }}
-        onChange={handleChangeText}
+        onChange={saveDom}
         id = "storieCont"
         className = "storie-p"
       >
       </Editor>
-      <StorieMenu />      
+      <StorieMenu />
+      <Publish />      
     </div>
   );
   return content

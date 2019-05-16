@@ -68,6 +68,19 @@ const saveStorieId = (value) =>{
   }
 }
 
+const showModalPublish = (flag) =>{
+  return{
+    type: "SHOW_MODAL_PUBLISH",
+    publishFlag: flag
+  }
+}
+
+const saveStorieInfo = (data) => {
+  return{
+    type:"SAVE_STORIE_INFO",
+    storieInfo: data
+  }
+}
 
 export {showModalSignIn,
         showModalGetStarted, 
@@ -78,4 +91,6 @@ export {showModalSignIn,
         logOut,
         userInfo,
         showUserMenu,
-        saveStorieId}
+        saveStorieId,
+        showModalPublish,
+        saveStorieInfo}

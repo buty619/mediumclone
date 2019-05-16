@@ -3,10 +3,11 @@ import NavBar from "../components/navbar";
 import {connect} from "react-redux";
 import axios from "axios";
 import { Link } from 'react-router-dom';
-import {userInfo} from "../actionCreators";
+import {userInfo,saveStorieId} from "../actionCreators";
 import "../styles/editProfile.css";
 
-const EditProfile = ({userInfo,userInfoUpdate}) => {
+const EditProfile = ({userInfo,userInfoUpdate,saveStorieId}) => {
+  saveStorieId(null);
   let file = "";
   const loadImgs = (async (e)=>{
     var preview = document.getElementById('imgAvatar');
@@ -28,7 +29,7 @@ const EditProfile = ({userInfo,userInfoUpdate}) => {
     if(file){
       var formData = new FormData();
       formData.append('image',file);
-      let response = await axios.post("http://localhost:4000/uploadUserImg",formData);
+      let response = await axios.post("http://localhost:4000/uploadImg",formData);
       const url=response.data.imageUrl;
 
       const userUpdate = await axios.post('http://localhost:4000/updateUser', {
@@ -88,6 +89,9 @@ const mapDispatchToProps = dispatch => {
   return {
     userInfoUpdate (data) {
       dispatch(userInfo(data));
+    },
+    saveStorieId (value) {
+      dispatch(saveStorieId(value));
     }
   }
 }

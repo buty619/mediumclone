@@ -6,11 +6,11 @@ import {showUserMenu,logOut,userInfo,saveStorieId} from "../actionCreators";
 import "../styles/navbar.css"
 
 const OverMenu = ({overFlag,userInfo,userInfoDispach,userMenu,logOut,saveStorieId}) => {
-
   const logingOut = (()=>{
     logOut();
     userMenu(false);
     userInfoDispach({});
+    saveStorieId(null);
     localStorage.removeItem('token'); 
   });
 
@@ -19,6 +19,7 @@ const OverMenu = ({overFlag,userInfo,userInfoDispach,userMenu,logOut,saveStorieI
   });
 
   const goToNew = (async () =>{
+    saveStorieId(null);
     userMenu(false);
     let res = await axios.post('http://localhost:4000/create',{
       userId:userInfo.userId
@@ -39,9 +40,11 @@ const OverMenu = ({overFlag,userInfo,userInfoDispach,userMenu,logOut,saveStorieI
             </div>
           </li>
           <li><div className="nav-userNav-over-separador"></div></li>
-          <li><div className="nav-userNav-over-section" onClick={goToNew}><Link to="/new">New Story</Link></div></li>
+          <li><div className="nav-userNav-over-section" onClick={goToNew}><Link to="/newStorie">New Story</Link></div></li>
           <li><div className="nav-userNav-over-separador" ></div></li>
           <li><div className="nav-userNav-over-section" onClick={toogleUserMenu}><Link to={`/${userInfo.userId}/EditProfile`}>Edit Profile</Link></div></li>
+          <li><div className="nav-userNav-over-separador"></div></li>
+          <li><div className="nav-userNav-over-section" ><Link to={`/${userInfo.userId}/listStories`}>My Stories</Link></div></li>
           <li><div className="nav-userNav-over-separador"></div></li>
           <li><div className="nav-userNav-over-section" onClick={logingOut}><Link to={`/`}>Sign out</Link></div></li>
         </ul>

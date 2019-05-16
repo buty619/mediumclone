@@ -42,6 +42,7 @@
   cursor: pointer;
 }
 
+
 @media(min-width:768px){
   .nav-logo{
     display: inline;
