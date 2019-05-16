@@ -111,3 +111,18 @@
 .hide{
   display: none;
 }
+
+.form-signIn-label-danger{
+  font-size: 10px;
+  color:maroon;
+  width: 300px;
+  margin: auto;
+  font-weight: 400;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.danger{
+  border: 0.5px solid maroon;
+  border-radius: 4px;
+}

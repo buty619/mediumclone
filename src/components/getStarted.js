@@ -5,6 +5,38 @@ import {hideModalGetStarted} from "../actionCreators";
 import "../styles/getStarted.css";
 
 const GetStarted = ({getFlag, hideGetStarted}) => {
+
+  const inspect = (()=>{
+    if(document.getElementById("name").value === ""){
+      document.getElementById("name").classList.add("danger");
+      document.getElementById("danger-name-get").classList.remove("hide");
+    }else{
+      document.getElementById("name").classList.remove("danger");
+      document.getElementById("danger-name-get").classList.add("hide");
+    }
+    if(document.getElementById("email").value === ""){
+      document.getElementById("email").classList.add("danger");
+      document.getElementById("danger-email-get").classList.remove("hide")
+    }else{
+      document.getElementById("email").classList.remove("danger");
+      document.getElementById("danger-email-get").classList.add("hide");
+    }
+    if(document.getElementById("password").value === ""){
+      document.getElementById("password").classList.add("danger");
+      document.getElementById("danger-password-get").classList.remove("hide")
+    }else{
+      document.getElementById("password").classList.remove("danger");
+      document.getElementById("danger-password-get").classList.add("hide");
+    }
+    if(document.getElementById("name").value !== "" && 
+       document.getElementById("email").value !== "" &&
+       document.getElementById("password").value !== ""){
+        register()
+       }else{
+         
+       }
+  })
+
   const register = (async ()=>{
     await axios.post('http://localhost:4000/register', {
       name: document.getElementById("name").value,
@@ -12,6 +44,7 @@ const GetStarted = ({getFlag, hideGetStarted}) => {
       password: document.getElementById("password").value
     });
     hideGetStarted();
+    alert ("user created.");
   })
 
   let content = (
@@ -25,12 +58,15 @@ const GetStarted = ({getFlag, hideGetStarted}) => {
         <h2 className="form-getStarted-h2">Create an account to receive great stories in your inbox, personalize your homepage, and follow authors and topics that you love.</h2>
         <div className="form-getStarted-label">Your name</div>
         <input id="name" className="form-getStarted-imput"></input>
+        <div id="danger-name-get" className="form-getStarted-label-danger hide">Please enter a name.</div>
         <div className="form-getStarted-label">Your email</div>
         <input id="email" className="form-getStarted-imput"></input>
+        <div id="danger-email-get" className="form-getStarted-label-danger hide">Please enter a email.</div>
         <div className="form-getStarted-label">Your password</div>
         <input id="password" className="form-getStarted-imput" type="password"></input>
+        <div id="danger-password-get" className="form-getStarted-label-danger hide">Please enter a password.</div>
         <div>
-          <button className="form-getStarted-btn-submit" onClick={register}>Get started</button>
+          <button className="form-getStarted-btn-submit" onClick={inspect}>Get started</button>
         </div>
         <div className="form-getStarted-btn-back" onClick={hideGetStarted}>←All sign in options</div>
         </div>

@@ -11,6 +11,27 @@ const SignIn = ({signFlag,hideSignIn,showGetStarted,isLogIn,userInfo}) => {
     hideSignIn();
   });
 
+  const inspect = (()=>{
+    if(document.getElementById("emailSignIn").value === ""){
+      document.getElementById("emailSignIn").classList.add("danger");
+      document.getElementById("danger-email").classList.remove("hide")
+    }else{
+      document.getElementById("emailSignIn").classList.remove("danger");
+      document.getElementById("danger-email").classList.add("hide");
+    }
+    if(document.getElementById("passwordSignIn").value === ""){
+      document.getElementById("passwordSignIn").classList.add("danger");
+      document.getElementById("danger-password").classList.remove("hide");
+    }else{
+      document.getElementById("passwordSignIn").classList.remove("danger");
+      document.getElementById("danger-password").classList.add("hide");
+    }
+    if(document.getElementById("emailSignIn").value !== "" && 
+       document.getElementById("passwordSignIn").value !== ""){
+        signIn();
+       }
+  })
+
   const signIn = (async ()=>{
     const token = await axios.post('http://localhost:4000/logIn', {
       email: document.getElementById("emailSignIn").value,
@@ -22,6 +43,7 @@ const SignIn = ({signFlag,hideSignIn,showGetStarted,isLogIn,userInfo}) => {
     hideSignIn();
     isLogIn();
     userInfo(token.data.user);
+    alert ("Your Sign In");
   })
 
   let content = (
@@ -35,10 +57,12 @@ const SignIn = ({signFlag,hideSignIn,showGetStarted,isLogIn,userInfo}) => {
           <h2 className="form-signIn-h2">Sign in to get personalized story recommendations, follow authors and topics you love, and interact with stories.</h2>
           <div className="form-signIn-label">Your email</div>
           <input id="emailSignIn" className="form-signIn-imput"></input>
+          <div id="danger-email" className="form-signIn-label-danger hide">Please enter a email.</div>
           <div className="form-signIn-label">Your password</div>
           <input id="passwordSignIn" className="form-signIn-imput" type="password"></input>
+          <div id="danger-password" className="form-signIn-label-danger hide">Please enter a password.</div>
           <div>
-            <button className="form-signIn-btn-submit"  onClick={signIn}>Sign In</button>
+            <button className="form-signIn-btn-submit"  onClick={inspect}>Sign In</button>
           </div>
             <span className="form-signIn-label" >No account? </span>
             <div className="form-signIn-btn-back" onClick={toogleForms}>Create One</div>
